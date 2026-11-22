@@ -1,0 +1,34 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2026"><meta name="generator" content="DITA-OT"><meta name="description" content="Each alert has one of three severity levels. The level tells the operator how urgently to act."><title>Alert severity levels</title><link rel="stylesheet" type="text/css" href="../commonltr.css"></head><body id="alert-severity-reference"><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+  <h1 class="title topictitle1" id="ariaid-title1">Alert severity levels</h1>
+  
+  
+  <div class="body refbody"><p class="shortdesc">Each alert has one of three severity levels. The level tells the operator how urgently to act.</p>
+    <section class="section" id="alert-severity-reference__severity-levels"><h2 class="title sectiontitle">Severity levels</h2>
+      
+      <table class="simpletable"><colgroup><col style="width:14.285714285714285%"><col style="width:42.857142857142854%"><col style="width:42.857142857142854%"></colgroup><thead><tr class="sthead">
+          <th class="stentry" scope="col" id="alert-severity-reference__severity-levels__stentry__1">Severity</th>
+          <th class="stentry" scope="col" id="alert-severity-reference__severity-levels__stentry__2">Meaning</th>
+          <th class="stentry" scope="col" id="alert-severity-reference__severity-levels__stentry__3">Operator action</th>
+        </tr></thead><tbody><tr class="strow">
+          <td class="stentry" headers="alert-severity-reference__severity-levels__stentry__1"><code class="ph codeph">critical</code></td>
+          <td class="stentry" headers="alert-severity-reference__severity-levels__stentry__2">A reading is beyond a safety limit.</td>
+          <td class="stentry" headers="alert-severity-reference__severity-levels__stentry__3">Review the device immediately.</td>
+        </tr><tr class="strow">
+          <td class="stentry" headers="alert-severity-reference__severity-levels__stentry__1"><code class="ph codeph">warning</code></td>
+          <td class="stentry" headers="alert-severity-reference__severity-levels__stentry__2">A condition needs attention, for example a device stopped reporting.</td>
+          <td class="stentry" headers="alert-severity-reference__severity-levels__stentry__3">Check the device soon.</td>
+        </tr><tr class="strow">
+          <td class="stentry" headers="alert-severity-reference__severity-levels__stentry__1"><code class="ph codeph">info</code></td>
+          <td class="stentry" headers="alert-severity-reference__severity-levels__stentry__2">An event that needs no action, for example a firmware update.</td>
+          <td class="stentry" headers="alert-severity-reference__severity-levels__stentry__3">No action is needed.</td>
+        </tr></tbody></table>
+    </section>
+    <section class="section" id="alert-severity-reference__automatic-rule"><h2 class="title sectiontitle">Automatic alert rule</h2>
+      
+      <p class="p">The platform applies one automatic rule.</p>
+    </section>
+    <table cellpadding="4" cellspacing="0" border="1" class="simpletable properties simpletableborder"><colgroup><col style="width:33.33333333333333%"><col style="width:33.33333333333333%"><col style="width:33.33333333333333%"></colgroup><thead><tr class="sthead prophead"><th class="stentry proptypehd" scope="col" id="alert-severity-reference__proptypehd__1">Property</th><th class="stentry propvaluehd" scope="col" id="alert-severity-reference__propvaluehd__1">Value</th><th class="stentry propdeschd" scope="col" id="alert-severity-reference__propdeschd__1">Description</th></tr></thead><tbody><tr class="strow property"><td style="vertical-align:top;" class="stentry proptype">Measurement</td><td style="vertical-align:top;" class="stentry propvalue"><code class="ph codeph">vibration_mm_s</code></td><td style="vertical-align:top;" class="stentry propdesc">The reading that the rule checks.</td></tr><tr class="strow property"><td style="vertical-align:top;" class="stentry proptype">Limit</td><td style="vertical-align:top;" class="stentry propvalue"><span class="ph">5.0 mm/s</span></td><td style="vertical-align:top;" class="stentry propdesc">A reading above this value raises an alert. The limit cannot be configured.</td></tr><tr class="strow property"><td style="vertical-align:top;" class="stentry proptype">Severity raised</td><td style="vertical-align:top;" class="stentry propvalue"><code class="ph codeph">critical</code></td><td style="vertical-align:top;" class="stentry propdesc">The severity of the alert that the rule creates.</td></tr></tbody></table>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="alerts-concept.html" title="An alert is a notice that EdgePulse raises when a device needs attention.">About alerts</a></div></div><div class="linklist relconcepts"><strong>Related concepts</strong><br><ul class="linklist"><li class="linklist"><a class="link" href="alerts-concept.html" title="An alert is a notice that EdgePulse raises when a device needs attention.">About alerts</a></li></ul></div><div class="linklist reltasks"><strong>Related tasks</strong><br><ul class="linklist"><li class="linklist"><a class="link" href="acknowledge-alert-task.html" title="Record that you reviewed an alert, so that other operators know it is handled.">Acknowledge an alert</a></li><li class="linklist"><a class="link" href="register-device-task.html" title="Add a device to EdgePulse so that it can send readings and raise alerts.">Register a device</a></li></ul></div></nav></article></main></body></html>

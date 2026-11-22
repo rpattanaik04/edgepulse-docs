@@ -1,0 +1,34 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2026"><meta name="generator" content="DITA-OT"><meta name="description" content="Record that you reviewed an alert, so that other operators know it is handled."><title>Acknowledge an alert</title><link rel="stylesheet" type="text/css" href="../commonltr.css"></head><body id="acknowledge-alert-task"><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+  <h1 class="title topictitle1" id="ariaid-title1">Acknowledge an alert</h1>
+  
+  
+  <div class="body taskbody"><p class="shortdesc">Record that you reviewed an alert, so that other operators know it is handled.</p>
+    <section class="section prereq">
+      <p class="p">You are signed in to the <span class="keyword">EdgePulse</span> dashboard.</p>
+    </section>
+    <section class="section context">
+      <p class="p">Acknowledge an alert only after you have reviewed the device that raised it. The acknowledgement records your client ID and the time.</p>
+      <div class="note tip note_tip"><span class="note__title">Tip:</span> <div class="note__body">As an administrator, you can also delete a device that keeps raising alerts and has been retired. Deleting a device deletes its alerts.</div></div>
+    </section>
+    <section><ol class="ol steps"><li class="li step stepexpand">
+        <span class="ph cmd">Select <span class="ph uicontrol">Refresh</span>.</span>
+        <div class="itemgroup stepresult">The <span class="ph uicontrol">Alerts</span> table shows the latest alerts.</div>
+      </li><li class="li step stepexpand">
+        <span class="ph cmd">In the <span class="ph uicontrol">Alerts</span> table, find the alert and read its severity, device and message.</span>
+      </li><li class="li step stepexpand">
+        <span class="ph cmd">In the <span class="ph uicontrol">Devices</span> table, select the device and review its latest readings.</span>
+        <div class="itemgroup info">A vibration value above <span class="ph">5.0 mm/s</span> is shown in red.</div>
+      </li><li class="li step stepexpand">
+        <span class="ph cmd">In the alert row, select <span class="ph uicontrol">Acknowledge</span>.</span>
+        <div class="itemgroup stepresult">A green message confirms the acknowledgement.</div>
+      </li></ol></section>
+    <section class="section result">
+      <p class="p">The alert state changes to <em class="ph i">acknowledged</em>. The row shows your client ID, and the <span class="ph uicontrol">Open alerts</span> counter decreases by one.</p>
+    </section>
+    <section class="section postreq">
+      <p class="p">If new alerts keep arriving for the same device, set its status to <em class="ph i">maintenance</em> while you investigate.</p>
+    </section>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="alerts-concept.html" title="An alert is a notice that EdgePulse raises when a device needs attention.">About alerts</a></div></div><div class="linklist relconcepts"><strong>Related concepts</strong><br><ul class="linklist"><li class="linklist"><a class="link" href="alerts-concept.html" title="An alert is a notice that EdgePulse raises when a device needs attention.">About alerts</a></li></ul></div><div class="linklist relref"><strong>Related reference</strong><br><ul class="linklist"><li class="linklist"><a class="link" href="alert-severity-reference.html" title="Each alert has one of three severity levels. The level tells the operator how urgently to act.">Alert severity levels</a></li></ul></div></nav></article></main></body></html>

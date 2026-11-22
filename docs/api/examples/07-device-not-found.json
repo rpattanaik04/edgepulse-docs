@@ -1,0 +1,6 @@
+{
+    "error": {
+        "code": "device_not_found",
+        "message": "No device exists with the given ID."
+    }
+}

@@ -1,0 +1,13 @@
+flowchart LR
+    W["Writer edits<br/>Markdown"] --> PR["Pull request"]
+    PR --> CI{"CI checks"}
+    CI -- "API tests<br/>Listing check<br/>Strict build" --> R["Review"]
+    R --> M["Merge to main"]
+    M --> B["Build site"]
+    B --> D(["GitHub Pages"])
+    CI -- "Fail" --> W
+
+    classDef step fill:#e8f1fb,stroke:#2b6cb0,color:#1a365d;
+    classDef ok fill:#e3f6ec,stroke:#1b7f4b,color:#14532d;
+    class W,PR,R,M,B step;
+    class D ok;

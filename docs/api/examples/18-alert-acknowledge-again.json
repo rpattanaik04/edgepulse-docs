@@ -1,0 +1,6 @@
+{
+    "error": {
+        "code": "alert_already_acknowledged",
+        "message": "This alert has already been acknowledged."
+    }
+}

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="alert-severity-reference" xml:lang="en-US">
+  <title>Alert severity levels</title>
+  <shortdesc>Each alert has one of three severity levels. The level tells the operator how urgently to act.</shortdesc>
+  <prolog>
+    <author>Rakesh Pattanaik</author>
+    <critdates>
+      <created date="2026-11-21"/>
+      <revised modified="2026-11-21"/>
+    </critdates>
+    <metadata>
+      <audience type="user"/>
+    </metadata>
+  </prolog>
+  <refbody>
+    <section id="severity-levels">
+      <title>Severity levels</title>
+      <simpletable relcolwidth="1* 3* 3*">
+        <sthead>
+          <stentry>Severity</stentry>
+          <stentry>Meaning</stentry>
+          <stentry>Operator action</stentry>
+        </sthead>
+        <strow>
+          <stentry><codeph>critical</codeph></stentry>
+          <stentry>A reading is beyond a safety limit.</stentry>
+          <stentry>Review the device immediately.</stentry>
+        </strow>
+        <strow>
+          <stentry><codeph>warning</codeph></stentry>
+          <stentry>A condition needs attention, for example a device stopped reporting.</stentry>
+          <stentry>Check the device soon.</stentry>
+        </strow>
+        <strow>
+          <stentry><codeph>info</codeph></stentry>
+          <stentry>An event that needs no action, for example a firmware update.</stentry>
+          <stentry>No action is needed.</stentry>
+        </strow>
+      </simpletable>
+    </section>
+    <section id="automatic-rule">
+      <title>Automatic alert rule</title>
+      <p>The platform applies one automatic rule.</p>
+    </section>
+    <properties>
+        <prophead>
+          <proptypehd>Property</proptypehd>
+          <propvaluehd>Value</propvaluehd>
+          <propdeschd>Description</propdeschd>
+        </prophead>
+        <property>
+          <proptype>Measurement</proptype>
+          <propvalue><codeph>vibration_mm_s</codeph></propvalue>
+          <propdesc>The reading that the rule checks.</propdesc>
+        </property>
+        <property>
+          <proptype>Limit</proptype>
+          <propvalue><ph keyref="vibration-limit"/></propvalue>
+          <propdesc>A reading above this value raises an alert. The limit cannot be configured.</propdesc>
+        </property>
+        <property>
+          <proptype>Severity raised</proptype>
+          <propvalue><codeph>critical</codeph></propvalue>
+          <propdesc>The severity of the alert that the rule creates.</propdesc>
+        </property>
+    </properties>
+  </refbody>
+</reference>

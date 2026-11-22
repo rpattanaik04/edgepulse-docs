@@ -1,0 +1,7 @@
+flowchart LR
+    A["1. Back up<br/>your client code"] --> B["2. Update the error<br/>handling code"]
+    B --> C["3. Upgrade the<br/>server to 1.2"]
+    C --> D["4. Run the<br/>verification checks"]
+    D --> E(["Upgrade complete"])
+    classDef done fill:#e3f6ec,stroke:#1b7f4b,color:#14532d;
+    class E done;

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<!-- Key definitions. Change a value here and every topic that uses the key updates. -->
+<map xml:lang="en-US">
+  <title>EdgePulse keys</title>
+  <keydef keys="product-name">
+    <topicmeta>
+      <keywords>
+        <keyword>EdgePulse</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="product-version">
+    <topicmeta>
+      <keywords>
+        <keyword>1.2</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="vibration-limit">
+    <topicmeta>
+      <keywords>
+        <keyword>5.0 mm/s</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+</map>

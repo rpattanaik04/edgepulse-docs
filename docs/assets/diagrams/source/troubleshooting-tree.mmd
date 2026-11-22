@@ -1,0 +1,14 @@
+flowchart TB
+    S2(["Request returns<br/>an error response"]) --> Q2{"Status code"}
+    Q2 -- "401" --> Q3{"error.code"}
+    Q3 -- "invalid_credentials" --> F1["Check the client ID<br/>and client secret"]
+    Q3 -- "unauthorized" --> F2["Get a new token.<br/>Tokens last 3600 seconds."]
+    Q2 -- "404" --> F3["Check the device<br/>or alert ID"]
+    Q2 -- "409" --> F4["Alert already acknowledged.<br/>Refresh the list."]
+    Q2 -- "422" --> F5["Read error.details.<br/>Fix the listed fields."]
+
+
+    classDef start fill:#e8f1fb,stroke:#2b6cb0,color:#1a365d;
+    classDef fix fill:#e3f6ec,stroke:#1b7f4b,color:#14532d;
+    class S2 start;
+    class F1,F2,F3,F4,F5 fix;

@@ -1,0 +1,10 @@
+{
+    "id": "dev_1005",
+    "name": "Cooling Unit Gateway 05",
+    "site": "Pune Plant",
+    "protocol": "mqtt",
+    "status": "online",
+    "firmware": "1.1.9",
+    "last_seen": "2026-11-20T05:46:56.913566Z",
+    "created_at": "2026-08-22T05:46:54.013778Z"
+}

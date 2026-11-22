@@ -1,0 +1,37 @@
+flowchart LR
+    subgraph Clients["Clients"]
+        direction TB
+        BR["Web browser"]
+        CU["curl or HTTP client"]
+        SC["Your scripts"]
+        BR ~~~ CU ~~~ SC
+    end
+
+    subgraph Host["Your computer or a free cloud host"]
+        direction TB
+        subgraph App["Uvicorn server (port 8000)"]
+            direction TB
+            DASH["Dashboard<br/>/dashboard"]
+            DOCS["Swagger UI<br/>/docs"]
+            REST["REST API<br/>/api/v1"]
+        end
+        MEM[("In-memory data<br/>resets on restart")]
+        REST --> MEM
+    end
+
+    BR -- "HTTP" --> DASH
+    BR -- "HTTP" --> DOCS
+    CU -- "HTTP + Bearer token" --> REST
+    SC -- "HTTP + Bearer token" --> REST
+    DASH -- "Calls" --> REST
+    DOCS -- "Calls" --> REST
+
+    classDef client fill:#fdf3e3,stroke:#b7791f,color:#744210;
+    classDef app fill:#eef7ee,stroke:#2f855a,color:#1c4532;
+    classDef data fill:#e8f1fb,stroke:#2b6cb0,color:#1a365d;
+    class BR,CU,SC client;
+    class DASH,DOCS,REST app;
+    class MEM data;
+    style Clients fill:#fffaf1,stroke:#e0c48a,color:#744210
+    style Host fill:#f9fafb,stroke:#c3ccd6,color:#1f2933
+    style App fill:#f6fbf7,stroke:#9ccfae,color:#1c4532

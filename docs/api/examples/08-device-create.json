@@ -1,0 +1,10 @@
+{
+    "id": "dev_1006",
+    "name": "Chiller Gateway 06",
+    "site": "Pune Plant",
+    "protocol": "mqtt",
+    "status": "offline",
+    "firmware": "1.2.4",
+    "last_seen": null,
+    "created_at": "2026-11-20T05:46:56.902926Z"
+}

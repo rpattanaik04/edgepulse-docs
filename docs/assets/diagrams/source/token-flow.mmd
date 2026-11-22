@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant C as Client application
+    participant A as EdgePulse API
+
+    C->>A: POST /api/v1/auth/token (client_id, client_secret)
+    A-->>C: 200 OK (access_token, expires_in 3600)
+    C->>A: GET /api/v1/devices (Authorization: Bearer token)
+    A-->>C: 200 OK (device list)
+    Note over C,A: After 3600 seconds the token expires
+    C->>A: GET /api/v1/devices (expired token)
+    A-->>C: 401 Unauthorized (error.code = unauthorized)
+    C->>A: POST /api/v1/auth/token
+    A-->>C: 200 OK (new access_token)

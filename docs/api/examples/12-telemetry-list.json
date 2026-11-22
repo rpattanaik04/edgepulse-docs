@@ -1,0 +1,20 @@
+{
+    "device_id": "dev_1001",
+    "items": [
+        {
+            "temperature_c": 65.4,
+            "vibration_mm_s": 1.5,
+            "pressure_kpa": 436.6,
+            "timestamp": "2026-11-20T05:41:54.013778Z",
+            "device_id": "dev_1001"
+        },
+        {
+            "temperature_c": 64.6,
+            "vibration_mm_s": 1.1,
+            "pressure_kpa": 398.9,
+            "timestamp": "2026-11-20T05:36:54.013778Z",
+            "device_id": "dev_1001"
+        }
+    ],
+    "count": 2
+}

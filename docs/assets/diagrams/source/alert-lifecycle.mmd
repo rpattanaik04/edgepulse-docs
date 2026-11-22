@@ -1,0 +1,11 @@
+flowchart LR
+    R["Reading with vibration<br/>above 5.0 mm/s"] -- "Raised automatically<br/>(critical)" --> O(["Open"])
+    X["Any other alert"] -- "Raised" --> O
+    O -- "Operator selects Acknowledge<br/>Client ID and time are recorded" --> A(["Acknowledged"])
+
+    classDef source fill:#e8f1fb,stroke:#2b6cb0,color:#1a365d;
+    classDef open fill:#fde8e6,stroke:#b42318,color:#7a1a12;
+    classDef done fill:#e3f6ec,stroke:#1b7f4b,color:#14532d;
+    class R,X source;
+    class O open;
+    class A done;

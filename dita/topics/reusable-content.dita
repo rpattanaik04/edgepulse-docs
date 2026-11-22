@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="reusable-content" xml:lang="en-US">
+  <title>Reusable content</title>
+  <shortdesc>Content blocks that other topics reuse with a content reference (conref).</shortdesc>
+  <body>
+    <note id="demo-note" type="note"><keyword keyref="product-name"/> is a fictional product created for a documentation portfolio. Its REST API and dashboard are real and runnable.</note>
+    <note id="restart-warning" type="warning">The demo API keeps data in memory. When the server restarts, all data returns to the original demo set.</note>
+  </body>
+</topic>

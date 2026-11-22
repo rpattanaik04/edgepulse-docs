@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant D as Device or script
+    participant A as EdgePulse API
+    participant O as Operator (dashboard)
+
+    D->>A: POST /devices/{id}/telemetry (vibration 6.4 mm/s)
+    A->>A: Store reading, set device online
+    A->>A: Vibration above 5.0 mm/s: raise critical alert
+    A-->>D: 201 Created (reading)
+    O->>A: GET /alerts?state=open
+    A-->>O: 200 OK (includes the new critical alert)
+    O->>A: POST /alerts/{id}/acknowledge
+    A-->>O: 200 OK (state = acknowledged)

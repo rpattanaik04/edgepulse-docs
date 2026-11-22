@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="alerts-concept" xml:lang="en-US">
+  <title>About alerts</title>
+  <shortdesc>An alert is a notice that <keyword keyref="product-name"/> raises when a device needs attention.</shortdesc>
+  <prolog>
+    <author>Rakesh Pattanaik</author>
+    <critdates>
+      <created date="2026-11-21"/>
+      <revised modified="2026-11-21"/>
+    </critdates>
+    <metadata>
+      <audience type="user"/>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>This topic applies to <keyword keyref="product-name"/> <keyword keyref="product-version"/>. Operators use alerts to see which devices need attention and to record that someone has reviewed them.</p>
+    <fig id="lifecycle-figure">
+      <title>Alert life cycle</title>
+      <image href="../images/alert-lifecycle.png" placement="break">
+        <alt>Flow diagram. A reading with vibration above the limit, or any other alert, creates an open alert. When an operator selects Acknowledge, the alert becomes acknowledged.</alt>
+      </image>
+    </fig>
+    <note conref="reusable-content.dita#reusable-content/demo-note"/>
+    <section id="states">
+      <title>Alert states</title>
+      <dl>
+        <dlentry>
+          <dt>Open</dt>
+          <dd>Nobody has acknowledged the alert.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Acknowledged</dt>
+          <dd>An operator has reviewed the alert. <keyword keyref="product-name"/> records who acknowledged it and when.</dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section id="automatic-alerts">
+      <title>Automatic critical alerts</title>
+      <p>When a device reports vibration above <ph keyref="vibration-limit"/>, the platform raises a critical alert automatically.</p>
+    </section>
+  </conbody>
+</concept>

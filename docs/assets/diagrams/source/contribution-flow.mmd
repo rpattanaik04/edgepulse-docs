@@ -1,0 +1,9 @@
+flowchart TB
+    A["1. Create a branch"] --> B["2. Write or edit the document"]
+    B --> C["3. Preview with<br/>mkdocs serve"]
+    C --> D["4. Open a pull request"]
+    D --> E["5. Checks pass"]
+    E --> F["6. Reviewer approves"]
+    F --> G(["7. Merge"])
+    classDef done fill:#e3f6ec,stroke:#1b7f4b,color:#14532d;
+    class G done;

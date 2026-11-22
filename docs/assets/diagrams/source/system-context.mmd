@@ -1,0 +1,32 @@
+flowchart TB
+    subgraph Users["Users and systems"]
+        direction LR
+        OPS["Operator<br/>(dashboard)"]
+        INT["Integrator<br/>(external system)"]
+    end
+
+    subgraph Cloud["EdgePulse platform (cloud)"]
+        direction LR
+        ING["Ingestion<br/>service"] --> DB[("Device and<br/>telemetry store")]
+        ING --> ALR["Alert<br/>engine"]
+        ALR --> DB
+        DB --> API["REST API<br/>/api/v1"]
+    end
+
+    subgraph Site["Industrial site (edge)"]
+        direction LR
+        S1["Sensors<br/>temperature, vibration,<br/>pressure"] --> GW["EdgePulse Gateway<br/>MQTT / OPC UA / Modbus"]
+    end
+
+    GW -- "Telemetry" --> ING
+    API -- "HTTPS + Bearer token" --- Users
+
+    classDef edge fill:#e8f1fb,stroke:#2b6cb0,color:#1a365d;
+    classDef cloud fill:#eef7ee,stroke:#2f855a,color:#1c4532;
+    classDef user fill:#fdf3e3,stroke:#b7791f,color:#744210;
+    class S1,GW edge;
+    class ING,DB,ALR,API cloud;
+    class OPS,INT user;
+    style Site fill:#f5f9fe,stroke:#9bb8de,color:#1a365d
+    style Cloud fill:#f6fbf7,stroke:#9ccfae,color:#1c4532
+    style Users fill:#fffaf1,stroke:#e0c48a,color:#744210

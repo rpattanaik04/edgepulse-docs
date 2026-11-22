@@ -1,0 +1,16 @@
+{
+    "error": {
+        "code": "validation_error",
+        "message": "The request contains invalid data.",
+        "details": [
+            {
+                "field": "name",
+                "issue": "String should have at least 3 characters"
+            },
+            {
+                "field": "site",
+                "issue": "String should have at least 2 characters"
+            }
+        ]
+    }
+}

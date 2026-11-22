@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: edgepulse-demo-api
+    runtime: python
+    plan: free
+    region: oregon
+    rootDir: api-demo
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-10000}
+    healthCheckPath: /api/v1/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.8"
+      - key: EDGEPULSE_CLIENT_ID
+        value: demo-client
+      - key: EDGEPULSE_CLIENT_SECRET
+        value: demo-secret

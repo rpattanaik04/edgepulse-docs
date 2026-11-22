@@ -1,0 +1,10 @@
+{
+    "id": "alt_5001",
+    "device_id": "dev_1003",
+    "severity": "critical",
+    "state": "acknowledged",
+    "message": "Vibration 6.8 mm/s exceeds the 5.0 mm/s limit.",
+    "raised_at": "2026-11-20T03:46:54.013778Z",
+    "acknowledged_at": "2026-11-20T05:46:56.921265Z",
+    "acknowledged_by": "demo-client"
+}

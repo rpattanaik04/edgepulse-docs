@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="register-device-task" xml:lang="en-US">
+  <title>Register a device</title>
+  <shortdesc>Add a device to <keyword keyref="product-name"/> so that it can send readings and raise alerts.</shortdesc>
+  <prolog>
+    <author>Rakesh Pattanaik</author>
+    <critdates>
+      <created date="2026-11-21"/>
+      <revised modified="2026-11-21"/>
+    </critdates>
+    <metadata>
+      <audience type="administrator"/>
+    </metadata>
+  </prolog>
+  <taskbody>
+    <prereq>
+      <p>You are signed in to the dashboard.</p>
+    </prereq>
+    <context>
+      <p>A new device starts with the status <i>offline</i>. It becomes <i>online</i> when it sends its first reading.</p>
+      <note conref="reusable-content.dita#reusable-content/restart-warning"/>
+    </context>
+    <steps>
+      <step>
+        <cmd>Select <uicontrol>Add device</uicontrol>.</cmd>
+      </step>
+      <step>
+        <cmd>Enter the device details.</cmd>
+        <info>
+          <simpletable relcolwidth="1* 3*">
+            <sthead>
+              <stentry>Field</stentry>
+              <stentry>Rule</stentry>
+            </sthead>
+            <strow>
+              <stentry><uicontrol>Name</uicontrol></stentry>
+              <stentry>3 to 64 characters.</stentry>
+            </strow>
+            <strow>
+              <stentry><uicontrol>Site</uicontrol></stentry>
+              <stentry>2 to 64 characters.</stentry>
+            </strow>
+            <strow>
+              <stentry><uicontrol>Protocol</uicontrol></stentry>
+              <stentry>MQTT, OPCUA or MODBUS.</stentry>
+            </strow>
+            <strow>
+              <stentry><uicontrol>Firmware</uicontrol></stentry>
+              <stentry>The installed version. The default is <codeph>1.0.0</codeph>.</stentry>
+            </strow>
+          </simpletable>
+        </info>
+      </step>
+      <step>
+        <cmd>Select <uicontrol>Register</uicontrol>.</cmd>
+        <stepresult>A green message confirms the registration, and the device appears in the <uicontrol>Devices</uicontrol> table.</stepresult>
+      </step>
+    </steps>
+    <result>
+      <p>The device has the status <i>offline</i> until it sends a reading.</p>
+    </result>
+  </taskbody>
+</task>

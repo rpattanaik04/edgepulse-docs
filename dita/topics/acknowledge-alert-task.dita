@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="acknowledge-alert-task" xml:lang="en-US">
+  <title>Acknowledge an alert</title>
+  <shortdesc>Record that you reviewed an alert, so that other operators know it is handled.</shortdesc>
+  <prolog>
+    <author>Rakesh Pattanaik</author>
+    <critdates>
+      <created date="2026-11-21"/>
+      <revised modified="2026-11-21"/>
+    </critdates>
+    <metadata>
+      <audience type="user"/>
+    </metadata>
+  </prolog>
+  <taskbody>
+    <prereq>
+      <p>You are signed in to the <keyword keyref="product-name"/> dashboard.</p>
+    </prereq>
+    <context>
+      <p>Acknowledge an alert only after you have reviewed the device that raised it. The acknowledgement records your client ID and the time.</p>
+      <note audience="administrator" type="tip">As an administrator, you can also delete a device that keeps raising alerts and has been retired. Deleting a device deletes its alerts.</note>
+    </context>
+    <steps>
+      <step>
+        <cmd>Select <uicontrol>Refresh</uicontrol>.</cmd>
+        <stepresult>The <uicontrol>Alerts</uicontrol> table shows the latest alerts.</stepresult>
+      </step>
+      <step>
+        <cmd>In the <uicontrol>Alerts</uicontrol> table, find the alert and read its severity, device and message.</cmd>
+      </step>
+      <step>
+        <cmd>In the <uicontrol>Devices</uicontrol> table, select the device and review its latest readings.</cmd>
+        <info>A vibration value above <ph keyref="vibration-limit"/> is shown in red.</info>
+      </step>
+      <step>
+        <cmd>In the alert row, select <uicontrol>Acknowledge</uicontrol>.</cmd>
+        <stepresult>A green message confirms the acknowledgement.</stepresult>
+      </step>
+    </steps>
+    <result>
+      <p>The alert state changes to <i>acknowledged</i>. The row shows your client ID, and the <uicontrol>Open alerts</uicontrol> counter decreases by one.</p>
+    </result>
+    <postreq audience="administrator">
+      <p>If new alerts keep arriving for the same device, set its status to <i>maintenance</i> while you investigate.</p>
+    </postreq>
+  </taskbody>
+</task>

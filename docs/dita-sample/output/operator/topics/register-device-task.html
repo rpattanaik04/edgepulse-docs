@@ -1,0 +1,45 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2026"><meta name="generator" content="DITA-OT"><meta name="description" content="Add a device to EdgePulse so that it can send readings and raise alerts."><title>Register a device</title><link rel="stylesheet" type="text/css" href="../commonltr.css"></head><body id="register-device-task"><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+  <h1 class="title topictitle1" id="ariaid-title1">Register a device</h1>
+  
+  
+  <div class="body taskbody"><p class="shortdesc">Add a device to <span class="keyword">EdgePulse</span> so that it can send readings and raise alerts.</p>
+    <section class="section prereq">
+      <p class="p">You are signed in to the dashboard.</p>
+    </section>
+    <section class="section context">
+      <p class="p">A new device starts with the status <em class="ph i">offline</em>. It becomes <em class="ph i">online</em> when it sends its first reading.</p>
+      <div class="note warning note_warning"><span class="note__title">Warning:</span> <div class="note__body">The demo API keeps data in memory. When the server restarts, all data returns to the original demo set.</div></div>
+    </section>
+    <section><ol class="ol steps"><li class="li step stepexpand">
+        <span class="ph cmd">Select <span class="ph uicontrol">Add device</span>.</span>
+      </li><li class="li step stepexpand">
+        <span class="ph cmd">Enter the device details.</span>
+        <div class="itemgroup info">
+          <table class="simpletable"><colgroup><col style="width:25%"><col style="width:75%"></colgroup><thead><tr class="sthead">
+              <th class="stentry" scope="col" id="register-device-task__stentry__1">Field</th>
+              <th class="stentry" scope="col" id="register-device-task__stentry__2">Rule</th>
+            </tr></thead><tbody><tr class="strow">
+              <td class="stentry" headers="register-device-task__stentry__1"><span class="ph uicontrol">Name</span></td>
+              <td class="stentry" headers="register-device-task__stentry__2">3 to 64 characters.</td>
+            </tr><tr class="strow">
+              <td class="stentry" headers="register-device-task__stentry__1"><span class="ph uicontrol">Site</span></td>
+              <td class="stentry" headers="register-device-task__stentry__2">2 to 64 characters.</td>
+            </tr><tr class="strow">
+              <td class="stentry" headers="register-device-task__stentry__1"><span class="ph uicontrol">Protocol</span></td>
+              <td class="stentry" headers="register-device-task__stentry__2">MQTT, OPCUA or MODBUS.</td>
+            </tr><tr class="strow">
+              <td class="stentry" headers="register-device-task__stentry__1"><span class="ph uicontrol">Firmware</span></td>
+              <td class="stentry" headers="register-device-task__stentry__2">The installed version. The default is <code class="ph codeph">1.0.0</code>.</td>
+            </tr></tbody></table>
+        </div>
+      </li><li class="li step stepexpand">
+        <span class="ph cmd">Select <span class="ph uicontrol">Register</span>.</span>
+        <div class="itemgroup stepresult">A green message confirms the registration, and the device appears in the <span class="ph uicontrol">Devices</span> table.</div>
+      </li></ol></section>
+    <section class="section result">
+      <p class="p">The device has the status <em class="ph i">offline</em> until it sends a reading.</p>
+    </section>
+  </div>
+<nav role="navigation" class="related-links"><div class="linklist relconcepts"><strong>Related concepts</strong><br><ul class="linklist"><li class="linklist"><a class="link" href="alerts-concept.html" title="An alert is a notice that EdgePulse raises when a device needs attention.">About alerts</a></li></ul></div><div class="linklist relref"><strong>Related reference</strong><br><ul class="linklist"><li class="linklist"><a class="link" href="alert-severity-reference.html" title="Each alert has one of three severity levels. The level tells the operator how urgently to act.">Alert severity levels</a></li></ul></div></nav></article></main></body></html>

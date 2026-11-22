@@ -1,0 +1,905 @@
+openapi: 3.1.0
+info:
+  title: EdgePulse API
+  summary: REST API for monitoring industrial edge devices.
+  description: 'EdgePulse is a **fictional** IIoT monitoring platform created for
+    a documentation portfolio. This API is real and runnable, but all data is fictional
+    and resets on restart.
+
+
+    Authenticate with `POST /api/v1/auth/token`, then send the token as `Authorization:
+    Bearer <token>`.'
+  contact:
+    name: Rakesh Pattanaik
+    url: https://github.com/rpattanaik04
+  license:
+    name: MIT
+    identifier: MIT
+  version: 1.2.0
+paths:
+  /api/v1/health:
+    get:
+      tags:
+      - Health
+      summary: Check service health
+      operationId: health_api_v1_health_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+  /api/v1/auth/token:
+    post:
+      tags:
+      - Authentication
+      summary: Get an access token
+      operationId: create_token_api_v1_auth_token_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '401':
+          description: Incorrect credentials.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/devices:
+    get:
+      tags:
+      - Devices
+      summary: List devices
+      operationId: list_devices_api_v1_devices_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: status
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/DeviceStatus'
+          - type: 'null'
+          title: Status
+      - name: site
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Exact site name.
+          title: Site
+        description: Exact site name.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          default: 20
+          title: Limit
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+          title: Offset
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceList'
+        '401':
+          description: Missing, invalid or expired token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      tags:
+      - Devices
+      summary: Register a device
+      operationId: create_device_api_v1_devices_post
+      security:
+      - HTTPBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceCreate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '401':
+          description: Missing, invalid or expired token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/devices/{device_id}:
+    get:
+      tags:
+      - Devices
+      summary: Get a device
+      operationId: get_device_api_v1_devices__device_id__get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: device_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Device Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '401':
+          description: Missing, invalid or expired token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Device not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      tags:
+      - Devices
+      summary: Update a device
+      operationId: update_device_api_v1_devices__device_id__patch
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: device_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Device Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '401':
+          description: Missing, invalid or expired token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Device not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+      - Devices
+      summary: Delete a device
+      operationId: delete_device_api_v1_devices__device_id__delete
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: device_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Device Id
+      responses:
+        '204':
+          description: Successful Response
+        '401':
+          description: Missing, invalid or expired token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Device not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/devices/{device_id}/telemetry:
+    get:
+      tags:
+      - Telemetry
+      summary: List telemetry readings
+      operationId: list_telemetry_api_v1_devices__device_id__telemetry_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: device_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Device Id
+      - name: since
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          description: Return readings at or after this UTC time.
+          title: Since
+        description: Return readings at or after this UTC time.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          description: Maximum readings, newest first.
+          default: 10
+          title: Limit
+        description: Maximum readings, newest first.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelemetryList'
+        '401':
+          description: Missing, invalid or expired token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Device not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      tags:
+      - Telemetry
+      summary: Submit a telemetry reading
+      description: Stores one reading and marks the device online. If vibration exceeds
+        5.0 mm/s, a critical alert is raised automatically.
+      operationId: submit_telemetry_api_v1_devices__device_id__telemetry_post
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: device_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Device Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TelemetryCreate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelemetryReading'
+        '401':
+          description: Missing, invalid or expired token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Device not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/alerts:
+    get:
+      tags:
+      - Alerts
+      summary: List alerts
+      operationId: list_alerts_api_v1_alerts_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: severity
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/Severity'
+          - type: 'null'
+          title: Severity
+      - name: state
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/AlertState'
+          - type: 'null'
+          title: State
+      - name: device_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Device Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertList'
+        '401':
+          description: Missing, invalid or expired token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/alerts/{alert_id}/acknowledge:
+    post:
+      tags:
+      - Alerts
+      summary: Acknowledge an alert
+      operationId: acknowledge_alert_api_v1_alerts__alert_id__acknowledge_post
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: alert_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Alert Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alert'
+        '401':
+          description: Missing, invalid or expired token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Alert not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Alert already acknowledged.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    Alert:
+      properties:
+        id:
+          type: string
+          title: Id
+          examples:
+          - alt_5001
+        device_id:
+          type: string
+          title: Device Id
+        severity:
+          $ref: '#/components/schemas/Severity'
+        state:
+          $ref: '#/components/schemas/AlertState'
+        message:
+          type: string
+          title: Message
+        raised_at:
+          type: string
+          format: date-time
+          title: Raised At
+        acknowledged_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Acknowledged At
+        acknowledged_by:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Acknowledged By
+      type: object
+      required:
+      - id
+      - device_id
+      - severity
+      - state
+      - message
+      - raised_at
+      title: Alert
+    AlertList:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Alert'
+          type: array
+          title: Items
+        total:
+          type: integer
+          title: Total
+      type: object
+      required:
+      - items
+      - total
+      title: AlertList
+    AlertState:
+      type: string
+      enum:
+      - open
+      - acknowledged
+      title: AlertState
+    Device:
+      properties:
+        id:
+          type: string
+          title: Id
+          examples:
+          - dev_1001
+        name:
+          type: string
+          title: Name
+        site:
+          type: string
+          title: Site
+        protocol:
+          $ref: '#/components/schemas/Protocol'
+        status:
+          $ref: '#/components/schemas/DeviceStatus'
+        firmware:
+          type: string
+          title: Firmware
+        last_seen:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Last Seen
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+      type: object
+      required:
+      - id
+      - name
+      - site
+      - protocol
+      - status
+      - firmware
+      - created_at
+      title: Device
+    DeviceCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 64
+          minLength: 3
+          title: Name
+          examples:
+          - Boiler Gateway 07
+        site:
+          type: string
+          maxLength: 64
+          minLength: 2
+          title: Site
+          examples:
+          - Pune Plant
+        protocol:
+          $ref: '#/components/schemas/Protocol'
+          default: mqtt
+        firmware:
+          type: string
+          title: Firmware
+          default: 1.0.0
+          examples:
+          - 1.2.4
+      type: object
+      required:
+      - name
+      - site
+      title: DeviceCreate
+    DeviceList:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Device'
+          type: array
+          title: Items
+        total:
+          type: integer
+          title: Total
+        limit:
+          type: integer
+          title: Limit
+        offset:
+          type: integer
+          title: Offset
+      type: object
+      required:
+      - items
+      - total
+      - limit
+      - offset
+      title: DeviceList
+    DeviceStatus:
+      type: string
+      enum:
+      - online
+      - offline
+      - maintenance
+      title: DeviceStatus
+    DeviceUpdate:
+      properties:
+        name:
+          anyOf:
+          - type: string
+            maxLength: 64
+            minLength: 3
+          - type: 'null'
+          title: Name
+        site:
+          anyOf:
+          - type: string
+            maxLength: 64
+            minLength: 2
+          - type: 'null'
+          title: Site
+        status:
+          anyOf:
+          - $ref: '#/components/schemas/DeviceStatus'
+          - type: 'null'
+        firmware:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Firmware
+      type: object
+      title: DeviceUpdate
+    ErrorBody:
+      properties:
+        code:
+          type: string
+          title: Code
+          description: Stable, machine-readable error code.
+        message:
+          type: string
+          title: Message
+          description: Readable explanation of the error.
+        details:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/ErrorDetail'
+            type: array
+          - type: 'null'
+          title: Details
+          description: Present for validation errors. One item per invalid field.
+      type: object
+      required:
+      - code
+      - message
+      title: ErrorBody
+    ErrorDetail:
+      properties:
+        field:
+          type: string
+          title: Field
+          examples:
+          - name
+        issue:
+          type: string
+          title: Issue
+          examples:
+          - String should have at least 3 characters
+      type: object
+      required:
+      - field
+      - issue
+      title: ErrorDetail
+    ErrorResponse:
+      properties:
+        error:
+          $ref: '#/components/schemas/ErrorBody'
+      type: object
+      required:
+      - error
+      title: ErrorResponse
+    HealthResponse:
+      properties:
+        status:
+          type: string
+          title: Status
+          examples:
+          - ok
+        version:
+          type: string
+          title: Version
+          examples:
+          - 1.2.0
+        time:
+          type: string
+          format: date-time
+          title: Time
+          description: Server time in UTC.
+      type: object
+      required:
+      - status
+      - version
+      - time
+      title: HealthResponse
+    Protocol:
+      type: string
+      enum:
+      - mqtt
+      - opcua
+      - modbus
+      title: Protocol
+    Severity:
+      type: string
+      enum:
+      - info
+      - warning
+      - critical
+      title: Severity
+    TelemetryCreate:
+      properties:
+        temperature_c:
+          type: number
+          maximum: 200.0
+          minimum: -50.0
+          title: Temperature C
+          examples:
+          - 72.4
+        vibration_mm_s:
+          type: number
+          maximum: 100.0
+          minimum: 0.0
+          title: Vibration Mm S
+          examples:
+          - 2.1
+        pressure_kpa:
+          type: number
+          maximum: 2000.0
+          minimum: 0.0
+          title: Pressure Kpa
+          examples:
+          - 412.0
+        timestamp:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Timestamp
+          description: Reading time in UTC. Defaults to server time.
+      type: object
+      required:
+      - temperature_c
+      - vibration_mm_s
+      - pressure_kpa
+      title: TelemetryCreate
+    TelemetryList:
+      properties:
+        device_id:
+          type: string
+          title: Device Id
+        items:
+          items:
+            $ref: '#/components/schemas/TelemetryReading'
+          type: array
+          title: Items
+        count:
+          type: integer
+          title: Count
+      type: object
+      required:
+      - device_id
+      - items
+      - count
+      title: TelemetryList
+    TelemetryReading:
+      properties:
+        temperature_c:
+          type: number
+          maximum: 200.0
+          minimum: -50.0
+          title: Temperature C
+          examples:
+          - 72.4
+        vibration_mm_s:
+          type: number
+          maximum: 100.0
+          minimum: 0.0
+          title: Vibration Mm S
+          examples:
+          - 2.1
+        pressure_kpa:
+          type: number
+          maximum: 2000.0
+          minimum: 0.0
+          title: Pressure Kpa
+          examples:
+          - 412.0
+        timestamp:
+          type: string
+          format: date-time
+          title: Timestamp
+        device_id:
+          type: string
+          title: Device Id
+      type: object
+      required:
+      - temperature_c
+      - vibration_mm_s
+      - pressure_kpa
+      - timestamp
+      - device_id
+      title: TelemetryReading
+    TokenRequest:
+      properties:
+        client_id:
+          type: string
+          title: Client Id
+          examples:
+          - demo-client
+        client_secret:
+          type: string
+          title: Client Secret
+          examples:
+          - demo-secret
+      type: object
+      required:
+      - client_id
+      - client_secret
+      title: TokenRequest
+    TokenResponse:
+      properties:
+        access_token:
+          type: string
+          title: Access Token
+        token_type:
+          type: string
+          title: Token Type
+          default: Bearer
+        expires_in:
+          type: integer
+          title: Expires In
+          description: Token lifetime in seconds.
+      type: object
+      required:
+      - access_token
+      - expires_in
+      title: TokenResponse
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      description: Token from POST /api/v1/auth/token
+      scheme: bearer
+tags:
+- name: Health
+  description: Service availability. No authentication required.
+- name: Authentication
+  description: Exchange client credentials for a bearer token.
+- name: Devices
+  description: Register and manage edge devices.
+- name: Telemetry
+  description: Send and read sensor readings.
+- name: Alerts
+  description: List and acknowledge alerts.

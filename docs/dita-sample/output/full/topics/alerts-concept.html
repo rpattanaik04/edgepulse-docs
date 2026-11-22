@@ -1,0 +1,32 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2026"><meta name="generator" content="DITA-OT"><meta name="description" content="An alert is a notice that EdgePulse raises when a device needs attention."><title>About alerts</title><link rel="stylesheet" type="text/css" href="../commonltr.css"></head><body id="alerts-concept"><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+  <h1 class="title topictitle1" id="ariaid-title1">About alerts</h1>
+  
+  
+  <div class="body conbody"><p class="shortdesc">An alert is a notice that <span class="keyword">EdgePulse</span> raises when a device needs attention.</p>
+    <p class="p">This topic applies to <span class="keyword">EdgePulse</span> <span class="keyword">1.2</span>. Operators use alerts to see which devices need attention and to record that someone has reviewed them.</p>
+    <figure class="fig fignone" id="alerts-concept__lifecycle-figure"><figcaption><span class="fig--title-label">Figure 1. </span>Alert life cycle</figcaption>
+      
+      <br><img class="image" src="../images/alert-lifecycle.png" alt="Flow diagram. A reading with vibration above the limit, or any other alert, creates an open alert. When an operator selects Acknowledge, the alert becomes acknowledged."><br>
+    </figure>
+    <div class="note note note_note"><span class="note__title">Note:</span> <div class="note__body"><span class="keyword">EdgePulse</span> is a fictional product created for a documentation portfolio. Its REST API and dashboard are real and runnable.</div></div>
+    <section class="section" id="alerts-concept__states"><h2 class="title sectiontitle">Alert states</h2>
+      
+      <dl class="dl">
+        
+          <dt class="dt dlterm">Open</dt>
+          <dd class="dd">Nobody has acknowledged the alert.</dd>
+        
+        
+          <dt class="dt dlterm">Acknowledged</dt>
+          <dd class="dd">An operator has reviewed the alert. <span class="keyword">EdgePulse</span> records who acknowledged it and when.</dd>
+        
+      </dl>
+    </section>
+    <section class="section" id="alerts-concept__automatic-alerts"><h2 class="title sectiontitle">Automatic critical alerts</h2>
+      
+      <p class="p">When a device reports vibration above <span class="ph">5.0 mm/s</span>, the platform raises a critical alert automatically.</p>
+    </section>
+  </div>
+<nav role="navigation" class="related-links"><ul class="ullinks"><li class="link ulchildlink"><strong><a href="alert-severity-reference.html">Alert severity levels</a></strong><br>Each alert has one of three severity levels. The level tells the operator how urgently to act.</li><li class="link ulchildlink"><strong><a href="acknowledge-alert-task.html">Acknowledge an alert</a></strong><br>Record that you reviewed an alert, so that other operators know it is handled.</li></ul><div class="linklist reltasks"><strong>Related tasks</strong><br><ul class="linklist"><li class="linklist"><a class="link" href="acknowledge-alert-task.html" title="Record that you reviewed an alert, so that other operators know it is handled.">Acknowledge an alert</a></li><li class="linklist"><a class="link" href="register-device-task.html" title="Add a device to EdgePulse so that it can send readings and raise alerts.">Register a device</a></li></ul></div><div class="linklist relref"><strong>Related reference</strong><br><ul class="linklist"><li class="linklist"><a class="link" href="alert-severity-reference.html" title="Each alert has one of three severity levels. The level tells the operator how urgently to act.">Alert severity levels</a></li></ul></div></nav></article></main></body></html>
